@@ -11,3 +11,11 @@ public class DemoApplication {
 	}
 
 }
+ //JSON FOR ENTRY DATA
+//{
+//    "name":"John Doe",
+//    "email":"john.doe@example.com"
+//       "address":"123 Main St, Anytown, USA",
+//	"dateOfBirth":"1990-01-01",
+//	"dateOfRegister":"2024-06-01"
+//}
