@@ -1,6 +1,6 @@
 package com.example23.demo.dto;
 
-public class PatientRespoondDto {
+public class PatientRespondDto {
     private  String  id;
     private String name,dateOfBirth,dateOfRegister,email,address;
 

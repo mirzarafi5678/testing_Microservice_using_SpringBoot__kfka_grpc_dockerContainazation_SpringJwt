@@ -1,14 +1,14 @@
 package com.example23.demo.Mapper;
 
 import com.example23.demo.dto.PatienRequestDto;
-import com.example23.demo.dto.PatientRespoondDto;
+import com.example23.demo.dto.PatientRespondDto;
 import com.example23.demo.model.Patient;
 
 import java.time.LocalDate;
 
 public class patientMapper {
-    public static PatientRespoondDto  mapper(Patient patient){
-        PatientRespoondDto obj = new PatientRespoondDto();
+    public static PatientRespondDto toDTO(Patient patient){
+        PatientRespondDto obj = new PatientRespondDto();
         obj.setAddress(patient.getAddress().toString());
         obj.setDateOfBirth(patient.getDateOfBirth().toString());
         obj.setId(patient.getId().toString());
