@@ -1,0 +1,46 @@
+
+services:
+  patient-service-db:
+    image: postgres:16-alpine
+    container_name: patient-service-db
+    environment:
+      POSTGRES_DB: microservice
+      POSTGRES_USER: admin_viewer
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5430:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin_viewer"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - patient-network
+
+  microservice:
+    build:
+      context: .
+      dockerfile: DockerFile1
+    container_name: microservice
+    depends_on:
+      patient-service-db:
+        condition: service_healthy
+    ports:
+      - "41111:41111"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://patient-service-db:5432/microservice
+      SPRING_DATASOURCE_USERNAME: admin_viewer
+      SPRING_DATASOURCE_PASSWORD: password
+    networks:
+      - patient-network
+
+volumes:
+  postgres_data:
+
+networks:
+  patient-network:
+    driver: bridge
+
+
