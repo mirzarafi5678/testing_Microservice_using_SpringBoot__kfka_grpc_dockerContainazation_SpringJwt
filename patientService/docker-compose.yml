@@ -1,5 +1,18 @@
 
 services:
+  billing-service:
+    build:
+      context: ../billingService
+      dockerfile: Dockerfile
+    container_name: billing-service
+    ports:
+      - "4001:4001"
+      - "9001:9001"
+    environment:
+      SERVER_PORT: 4001
+      GRPC_SERVER_PORT: 9001
+    networks:
+      - patient-network
   patient-service-db:
     image: postgres:16-alpine
     container_name: patient-service-db
@@ -27,12 +40,17 @@ services:
     depends_on:
       patient-service-db:
         condition: service_healthy
+      billing-service:
+        condition: service_started
     ports:
       - "41111:41111"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://patient-service-db:5432/microservice
       SPRING_DATASOURCE_USERNAME: admin_viewer
       SPRING_DATASOURCE_PASSWORD: password
+
+      BILLING_SERVICE_ADDRESS: billing-service
+      BILLING_SERVICE_GRPC_PORT: 9001
     networks:
       - patient-network
 
