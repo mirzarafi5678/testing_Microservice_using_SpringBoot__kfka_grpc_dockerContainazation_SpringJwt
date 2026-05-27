@@ -77,11 +77,18 @@ services:
     networks:
       - own-network
   api-gateway-service:
+    container_name: api-gateway
+#    depends_on:
+#      patient-service:
+#        condition: service_healthy
     build:
       context: ../api-gateway
       dockerfile: DockerFile1
     ports:
       - "4004:4004"
+    depends_on: # 👈 add this
+      patient-service:
+        condition: service_started
     networks:
       - own-network
 
