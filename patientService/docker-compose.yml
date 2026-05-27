@@ -1,5 +1,7 @@
 
 services:
+
+
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
     container_name: zookeeper
@@ -59,6 +61,21 @@ services:
     networks:
       - own-network
 
+  Analytic-service:
+    build:
+      context: ../AnalyticService
+      dockerfile: Dockerfile1
+    container_name: Anlyticervice
+    depends_on:
+      kafka:
+        condition: service_started
+    ports:
+      - "4002:4002"
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      SERVER_PORT: 4002
+    networks:
+      - own-network
   patient-service:
     build:
       context: .
