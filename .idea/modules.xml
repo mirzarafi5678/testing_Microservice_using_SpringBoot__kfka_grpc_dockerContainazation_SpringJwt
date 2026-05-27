@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/patientService/Microservice.iml" filepath="$PROJECT_DIR$/patientService/Microservice.iml" />
-      <module fileurl="file://$PROJECT_DIR$/billingService/billingService.iml" filepath="$PROJECT_DIR$/billingService/billingService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AnalyticService/AnalyticService.iml" filepath="$PROJECT_DIR$/AnalyticService/AnalyticService.iml" />
     </modules>
   </component>
 </project>

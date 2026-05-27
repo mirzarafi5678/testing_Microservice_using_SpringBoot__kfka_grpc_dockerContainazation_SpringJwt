@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="billingService" />
         <module name="Microservice" />
+        <module name="AnalyticService" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="AnalyticService" options="-parameters" />
       <module name="Microservice" options="-parameters" />
       <module name="billingService" options="-parameters" />
     </option>
