@@ -76,6 +76,15 @@ services:
       SERVER_PORT: 4002
     networks:
       - own-network
+  api-gateway-service:
+    build:
+      context: ../api-gateway
+      dockerfile: DockerFile1
+    ports:
+      - "4004:4004"
+    networks:
+      - own-network
+
   patient-service:
     build:
       context: .
@@ -88,9 +97,10 @@ services:
         condition: service_healthy
       billing-service:
         condition: service_started
-    ports:
-      - "41111:41111"
+#    ports:
+#      - "41111:41111"
     environment:
+      SERVER_PORT: 41111
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
       SPRING_DATASOURCE_URL: jdbc:postgresql://patient-service-db:5432/microservice
       SPRING_DATASOURCE_USERNAME: admin_viewer
