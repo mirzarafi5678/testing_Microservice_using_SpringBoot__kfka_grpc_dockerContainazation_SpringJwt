@@ -49,8 +49,8 @@ services:
       dockerfile: DockerFile1
 
     container_name: auth-service
-    ports:
-      - "41112:41112"
+#    ports:
+#      - "41112:41112"
     environment:
       JWT_SECRET :  38219bc8aba2437edb2d99c0b7bc0a63a8731b5d11c80abeee9fc0e53e7fd06d
       SPRING_DATASOURCE_URL: jdbc:mysql://auth-db:3306/AuthInfo
@@ -102,6 +102,10 @@ services:
 #    depends_on:
 #      patient-service:
 #        condition: service_healthy
+    environment:
+      AUTH_SERVICE_URL: http://auth-service:41112
+
+
     build:
       context: ../api-gateway
       dockerfile: DockerFile1

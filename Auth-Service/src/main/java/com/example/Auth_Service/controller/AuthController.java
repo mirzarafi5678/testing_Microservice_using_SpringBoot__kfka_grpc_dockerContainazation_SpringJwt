@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/auth")
 public class AuthController {
     private final AuthService authService;
 
@@ -38,7 +39,7 @@ public class AuthController {
     public ResponseEntity<Void> validateToken(
             @RequestHeader("Authorization") String authHeader) {
 
-        // Authorization: Bearer <token>
+
         if(authHeader == null || !authHeader.startsWith("Bearer ")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
