@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 public class User {
     @Id
     @GeneratedValue
-    @Column(columnDefinition = "CHAR(36)")
+    @Column(columnDefinition = "VARCHAR(36)", length = 36)
     private UUID id;
 
     @Column(unique = true, nullable = false)

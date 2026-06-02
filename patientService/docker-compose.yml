@@ -52,6 +52,7 @@ services:
     ports:
       - "41112:41112"
     environment:
+      JWT_SECRET :  38219bc8aba2437edb2d99c0b7bc0a63a8731b5d11c80abeee9fc0e53e7fd06d
       SPRING_DATASOURCE_URL: jdbc:mysql://auth-db:3306/AuthInfo
       SPRING_DATASOURCE_USERNAME: auth_user
       SPRING_DATASOURCE_PASSWORD: auth_pass
