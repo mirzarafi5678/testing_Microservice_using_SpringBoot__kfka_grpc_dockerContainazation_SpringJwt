@@ -21,3 +21,6 @@ Forward Filter sends HTTP request
    ↓
 Patient Service receives request
 ```
+
+
+<img width="1080" height="931" alt="image" src="https://github.com/user-attachments/assets/67dfaa8b-eaae-4a20-a75b-945824b31344" />
